@@ -18,12 +18,12 @@ app.get('/api', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-//   console.log('a user connected',socket.id);
+  console.log('a user connected',socket.id);
   var latLong
-  socket.on('createMessage', (newMessage)=>{
+  socket.on('getUserLatLong', (newMessage)=>{
     // console.log('newMessage', newMessage);
     latLong = newMessage
-console.log(newMessage);
+// console.log(newMessage);
     io.emit('get_msg', newMessage);
     // console.log(socket.broadcast.emit('get_msg',latLong),latLong);
     // socket.broadcast.to(socket.id).emit('get_msg',latLong);
@@ -34,6 +34,6 @@ console.log(newMessage);
 
 
 
-server.listen(3000, () => {
+server.listen(8080, () => {
   console.log('listening on *:3000');
 });
